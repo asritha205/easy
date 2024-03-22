@@ -13,47 +13,48 @@ from googletrans import Translator
 from PIL import Image
 import pandas as pd
 language_mapping = {
-    'tel': 'te',  # Telugu
-    'hin': 'hi',  # Hindi
-    'tam': 'ta',  # Tamil
-    'ben': 'bn',  # Bengali
-    'kan': 'kn',  # Kannada
-    'mal': 'ml',  # Malayalam
-    'mar': 'mr',  # Marathi
-    'guj': 'gu',  # Gujarati
-    'pan': 'pa',  # Punjabi
-    'urd': 'ur',  # Urdu
-    'san': 'sa',  # Sanskrit
-    'asm': 'as',  # Assamese
-    'nep': 'ne',  # Nepali
-    'snd': 'sd',  # Sindhi
-    'kok': 'kok',  # Konkani
-    'doi': 'doi',  # Dogri
-    'mni': 'mni',  # Manipuri
-    'kas': 'ks',  # Kashmiri
-    'brx': 'brx',  # Bodo
-    'eng': 'en', #english
-    'mai': 'mai',  # Maithili
-    'fra': 'fr',  # French
-    'spa': 'es',  # Spanish
-    'deu': 'de',  # German
-    'zho': 'zh-CN',  # Chinese (Simplified)
-    'jpn': 'ja',  # Japanese
-    'ara': 'ar',  # Arabic
-    'rus': 'ru',  # Russian
-    'por': 'pt',  # Portuguese
-    'ita': 'it',  # Italian
-    'kor': 'ko',  # Korean
-    'dut': 'nl',  # Dutch
-    'swe': 'sv',  # Swedish
-    'tur': 'tr',  # Turkish
-    'pol': 'pl',  # Polish
-    'vie': 'vi',  # Vietnamese
-    'gre': 'el',  # Greek
-    'tha': 'th',  # Thai
-    'ind': 'id',  # Indonesian
-    'may': 'ms',  # Malay
-    'fil': 'fil',  # Filipino
+    'Telugu': 'te',  # Telugu
+    'Hindi': 'hi',  # Hindi
+    'Tamil': 'ta',  # Tamil
+    'Bengali': 'bn',  # Bengali
+    'Bhojpuri':'bho',
+    'kannada': 'kn',  # Kannada
+    'marathi': 'mr',  # Marathi
+    'Urdu': 'ur',  # Urdu
+    'Assamese': 'as',  # Assamese
+    'Nepali': 'ne',  # Nepali
+    'Konkani': 'gom',  # Konkani
+    'English': 'en', #english
+    'Maithili': 'mai',  # Maithili
+    'French': 'fr',  # French
+    'Spanish': 'es',  # Spanish
+    'Latin':'la',
+    'German': 'de',  # German
+    'Chineese(simplified)': 'ch_sim',  # Chinese (Simplified)
+    'Chineese(traditional)':'ch_tra',
+    'Danish':'da',
+    'Persian(farsi)':'fa',
+    'Irish':'ga',
+    'Hungarian':'hu',
+    'Japanese': 'ja',  # Japanese
+    'Arabic': 'ar',  # Arabic
+    'Russian': 'ru',  # Russian
+    'Romanian':'ro',
+    'Portuguese': 'pt',  # Portuguese
+    'Italian': 'it',  # Italian
+    'Korean': 'ko',  # Korean
+    'Dutch': 'nl',  # Dutch
+    'Swedish': 'sv',  # Swedish
+    'Turkish': 'tr',  # Turkish
+    'Ukranian':'uk',
+    'Polish': 'pl',  # Polish
+    'Vietnamese': 'vi',  # Vietnamese
+    'Thai': 'th',  # Thai
+    'Indonesian': 'id',  # Indonesian
+    'Malay': 'ms',  # Malay
+    'Mongolian':'mn',
+    'Afrikaans':'af',
+    'Maltese':'mt',
 }
 
 st.title("OCR Based Multi Lingual Text Extraction and Machine Translation")
@@ -98,8 +99,90 @@ def text_extract(img, lan, slang, dlang):
 
 uploaded_file = st.file_uploader("Choose a file")
 picture = st.camera_input("Take a Picture")
-option1 = st.selectbox('Source Language' , ('tel', 'hin', 'tam', 'ben', 'kan', 'mal', 'mar', 'guj', 'pan', 'urd', 'san', 'asm', 'nep', 'snd', 'kok', 'doi', 'mni', 'kas', 'brx', 'eng', 'mai', 'fra', 'spa', 'deu', 'zho', 'jpn', 'ara', 'rus', 'por', 'ita', 'kor', 'dut', 'swe', 'tur', 'pol', 'vie', 'gre', 'tha', 'ind', 'may', 'fil'))
-option2 = st.selectbox('Desired Language' , ('tel', 'hin', 'tam', 'ben', 'kan', 'mal', 'mar', 'guj', 'pan', 'urd', 'san', 'asm', 'nep', 'snd', 'kok', 'doi', 'mni', 'kas', 'brx', 'eng', 'mai', 'fra', 'spa', 'deu', 'zho', 'jpn', 'ara', 'rus', 'por', 'ita', 'kor', 'dut', 'swe', 'tur', 'pol', 'vie', 'gre', 'tha', 'ind', 'may', 'fil'))
+option1 = st.selectbox('Source Language' , ('Afrikaans',
+    'Arabic',
+    'Assamese',
+    'Bengali',
+    'Bhojpuri',
+    'Chineese(simplified)',
+    'Chineese(traditional)',
+    'Danish',
+    'Dutch'
+    'English',
+    'French',
+    'German',
+    'Hindi',
+    'Hungarian',
+    'Indonesian',
+    'Irish',
+    'Italian',
+    'Japanese',
+    'Kannada',
+    'Korean',
+    'Konkani',
+    'Latin',
+    'Maithili',
+    'Malay',
+    'Maltese',
+    'Marathi',
+    'Mongolian',
+    'Nepali',
+    'Persian(farsi)',
+    'Polish',
+    'Portuguese',
+    'Romanian',
+    'Russian',
+    'Spanish',
+    'Swedish',
+    'Tamil',
+    'Telugu',
+    'Thai',
+    'Turkish',
+    'Ukranian',
+    'Urdu',
+    'Vietnamese'))
+option2 = st.selectbox('Desired Language' , ('Afrikaans',
+    'Arabic',
+    'Assamese',
+    'Bengali',
+    'Bhojpuri',
+    'Chineese(simplified)',
+    'Chineese(traditional)',
+    'Danish',
+    'Dutch'
+    'English',
+    'French',
+    'German',
+    'Hindi',
+    'Hungarian',
+    'Indonesian',
+    'Irish',
+    'Italian',
+    'Japanese',
+    'Kannada',
+    'Korean',
+    'Konkani',
+    'Latin',
+    'Maithili',
+    'Malay',
+    'Maltese',
+    'Marathi',
+    'Mongolian',
+    'Nepali',
+    'Persian(farsi)',
+    'Polish',
+    'Portuguese',
+    'Romanian',
+    'Russian',
+    'Spanish',
+    'Swedish',
+    'Tamil',
+    'Telugu',
+    'Thai',
+    'Turkish',
+    'Ukranian',
+    'Urdu',
+    'Vietnamese'))
 slang = language_mapping.get(option1)
 dlang = language_mapping.get(option2)
 if picture:
