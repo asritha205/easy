@@ -189,9 +189,11 @@ if picture:
   save_captured_image(picture.read())
   st.success("Image saved as captured_image.jpg")
   img = cv2.imread('captured_image.jpg')
+  st.image(img)
   text = text_extract(img, option1, slang, dlang)
   st.write(text)
 elif uploaded_file:
     img = Image.open(uploaded_file)
+    st.image(img)
     text = text_extract(img, option1, slang, dlang)
     st.write(text)
