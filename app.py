@@ -74,7 +74,7 @@ def preprocess(img):
 def text_extract(img, lan, slang, dlang):
     # Load the image
     gray = preprocess(img)
-    reader = easyocr.Reader([slang])
+    reader = easyocr.Reader([lang])
     results = reader.readtext(img)
     df=pd.DataFrame(results, columns=['bbox','text','conf'])
     print(df['text'])
@@ -185,6 +185,7 @@ option2 = st.selectbox('Desired Language' , ('Afrikaans',
     'Vietnamese'))
 slang = language_mapping.get(option1)
 dlang = language_mapping.get(option2)
+lang=slang
 if option1=='Chineese(simplified)':
     slang = 'zh'
 if option1=='Chineese(traditional)':
@@ -198,10 +199,10 @@ if picture:
   st.success("Image uploaded")
   img = cv2.imread('captured_image.jpg')
   st.image(img,caption='uploaded image')
-  text = text_extract(img, option1, slang, dlang)
+  text = text_extract(img, lang, slang, dlang)
   st.write(text)
 elif uploaded_file:
     img = Image.open(uploaded_file)
     st.image(img,caption='uploaded image')
-    text = text_extract(img, option1, slang, dlang)
+    text = text_extract(img, lang, slang, dlang)
     st.write(text)
