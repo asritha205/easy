@@ -97,7 +97,7 @@ def text_extract(img, lan, slang, dlang):
     return translated_text
     
 
-uploaded_file = st.file_uploader("Choose a file")
+uploaded_file = st.file_uploader("Choose a file in jpg format")
 picture = st.camera_input("Take a Picture")
 option1 = st.selectbox('Source Language' , ('Afrikaans',
     'Arabic',
@@ -185,15 +185,23 @@ option2 = st.selectbox('Desired Language' , ('Afrikaans',
     'Vietnamese'))
 slang = language_mapping.get(option1)
 dlang = language_mapping.get(option2)
+if option1=='Chineese(simplified)':
+    slang = 'zh'
+if option1=='Chineese(traditional)':
+    slang = 'zh-TW'
+if option2=='Chineese(simplified)':
+    dlang = 'zh'
+if option2=='Chineese(traditional)':
+    dlang = 'zh-TW'
 if picture:
   save_captured_image(picture.read())
-  st.success("Image saved as captured_image.jpg")
+  st.success("Image uploaded")
   img = cv2.imread('captured_image.jpg')
-  st.image(img)
+  st.image(img,caption='uploaded image')
   text = text_extract(img, option1, slang, dlang)
   st.write(text)
 elif uploaded_file:
     img = Image.open(uploaded_file)
-    st.image(img)
+    st.image(img,caption='uploaded image')
     text = text_extract(img, option1, slang, dlang)
     st.write(text)
