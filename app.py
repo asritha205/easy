@@ -75,7 +75,7 @@ def text_extract(img, lan, slang, dlang):
     # Load the image
     gray = preprocess(img)
     reader = easyocr.Reader([slang])
-    results = reader.readtext(gray)
+    results = reader.readtext(img)
     df=pd.DataFrame(results, columns=['bbox','text','conf'])
     print(df['text'])
     l=len(df)
