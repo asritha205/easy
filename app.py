@@ -56,7 +56,26 @@ language_mapping = {
     'Afrikaans':'af',
     'Maltese':'mt',
 }
-
+def set_bg_hack_url():
+    '''
+    A function to unpack an image from url and set as bg.
+    Returns
+    -------
+    The background.
+    '''
+        
+    st.markdown(
+         f"""
+         <style>
+         .stApp {{
+             background: url("https://www.bpmcdn.com/f/files/vernon/import/2023-06/33146655_web1_230628-KCN-morning-start_1.jpg;w=960");
+             background-size: cover
+         }}
+         </style>
+         """,
+         unsafe_allow_html=True
+     )
+set_bg_hack_url()
 st.title("OCR Based Multi Lingual Text Extraction and Machine Translation")
 st.text("Developed by Batch - 11")
 
