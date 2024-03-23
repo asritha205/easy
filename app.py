@@ -77,7 +77,6 @@ def set_bg_hack_url():
      )
 set_bg_hack_url()
 st.title("OCR Based Multi Lingual Text Extraction and Machine Translation")
-st.text("Developed by Batch - 11")
 
 def save_captured_image(img_bytes):
   img_arr = np.frombuffer(img_bytes, np.uint8)
