@@ -115,7 +115,7 @@ def text_extract(img, lan, slang, dlang):
     return translated_text
     
 
-uploaded_file = st.file_uploader("Choose a file in jpg format")
+uploaded_file = st.file_uploader("Choose a file in jpg format",type = (["jpg", "jpeg"]))
 picture = st.camera_input("Take a Picture")
 option1 = st.selectbox('Source Language' , ('Afrikaans',
     'Arabic',
