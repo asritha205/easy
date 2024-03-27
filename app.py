@@ -89,7 +89,7 @@ def preprocess(img):
     img = cv2.threshold(gray, 100, 255, cv2.THRESH_OTSU | cv2.THRESH_BINARY)[1]
     return img
 
-def text_extract(img, lan, slang, dlang):
+def text_extract(img, lang, slang, dlang):
     # Load the image
     gray = preprocess(img)
     reader = easyocr.Reader([lang])
